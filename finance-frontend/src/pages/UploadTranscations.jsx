@@ -538,7 +538,7 @@ const ReceiptUploadPage = () => {
                   const transactionsWithCreateAt = transactions.map((txn) => {
                     const { date, ...rest } = txn;
 
-                    const [day, month, year] = date.split("/");
+                    const [day, month, year] = date.split(/[/\-]/);
                     const isoDate = new Date(
                       `${year}-${month}-${day}`
                     ).toISOString();
