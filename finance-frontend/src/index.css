@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Personal Finance Assistant Design System
+   Beautiful, professional colors for financial applications
+   All colors MUST be HSL format
+*/
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 220 15% 98%;
+    --foreground: 220 13% 13%;
+
+    /* Card and surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 13%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+
+    /* Primary brand colors - Professional blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 70%;
+
+    /* Secondary colors - Elegant gray */
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 13% 13%;
+
+    /* Muted colors */
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent colors - Warm finance gold */
+    --accent: 45 93% 58%;
+    --accent-foreground: 220 13% 13%;
+
+    /* Success colors - Financial green */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 71% 95%;
+
+    /* Expense/destructive colors - Warning red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --expense: 0 84% 60%;
+    --expense-foreground: 0 0% 100%;
+    --expense-light: 0 84% 95%;
+
+    /* Income colors - Growth green */
+    --income: 142 71% 45%;
+    --income-foreground: 0 0% 100%;
+    --income-light: 142 71% 95%;
+
+    /* Border and input */
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 217 91% 60%;
+
+    /* Sidebar colors */
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 220 13% 13%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 94%;
+    --sidebar-accent-foreground: 220 13% 13%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-income: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
+    --gradient-expense: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(220 15% 98%));
+
+    /* Shadows */
+    --shadow-elegant: 0 4px 20px -2px hsl(217 91% 60% / 0.1);
+    --shadow-card: 0 2px 10px -2px hsl(0 0% 0% / 0.05);
+
+    /* Radius */
+    --radius: 0.75rem;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark mode base colors */
+    --background: 220 15% 9%;
+    --foreground: 220 15% 95%;
+
+    /* Dark mode card colors */
+    --card: 220 15% 12%;
+    --card-foreground: 220 15% 95%;
+
+    /* Dark mode popover */
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 15% 95%;
+
+    /* Dark mode primary */
+    --primary: 217 91% 65%;
+    --primary-foreground: 220 15% 9%;
+    --primary-glow: 217 91% 75%;
+
+    /* Dark mode secondary */
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 220 15% 95%;
+
+    /* Dark mode muted */
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 9% 65%;
+
+    /* Dark mode accent */
+    --accent: 45 93% 68%;
+    --accent-foreground: 220 15% 9%;
+
+    /* Dark mode success */
+    --success: 142 71% 55%;
+    --success-foreground: 220 15% 9%;
+    --success-light: 142 71% 15%;
+
+    /* Dark mode destructive/expense */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 220 15% 9%;
+    --expense: 0 84% 65%;
+    --expense-foreground: 220 15% 9%;
+    --expense-light: 0 84% 15%;
+
+    /* Dark mode income */
+    --income: 142 71% 55%;
+    --income-foreground: 220 15% 9%;
+    --income-light: 142 71% 15%;
+
+    /* Dark mode borders */
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 217 91% 65%;
+
+    /* Dark mode sidebar */
+    --sidebar-background: 220 15% 11%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 217 91% 65%;
+    --sidebar-primary-foreground: 220 15% 9%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 220 15% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 217 91% 65%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 65%), hsl(217 91% 75%));
+    --gradient-income: linear-gradient(135deg, hsl(142 71% 55%), hsl(142 71% 65%));
+    --gradient-expense: linear-gradient(135deg, hsl(0 84% 65%), hsl(0 84% 75%));
+    --gradient-card: linear-gradient(135deg, hsl(220 15% 12%), hsl(220 15% 15%));
+
+    /* Dark mode shadows */
+    --shadow-elegant: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 2px 10px -2px hsl(0 0% 0% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

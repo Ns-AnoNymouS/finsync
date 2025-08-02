@@ -1,0 +1,149 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        role:
+          type: string
+          enum: [user, admin]
+      example:
+        id: 5ebac534954b54139806c112
+        email: fake@example.com
+        name: fake name
+        role: user
+
+    Token:
+      type: object
+      properties:
+        token:
+          type: string
+        expires:
+          type: string
+          format: date-time
+      example:
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWJhYzUzNDk1NGI1NDEzOTgwNmMxMTIiLCJpYXQiOjE1ODkyOTg0ODQsImV4cCI6MTU4OTMwMDI4NH0.m1U63blB0MLej_WfB7yC2FTMnCziif9X8yzwDEfJXAg
+        expires: 2020-05-12T16:18:04.793Z
+
+    AuthTokens:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/Token'
+        refresh:
+          $ref: '#/components/schemas/Token'
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the transaction
+        userId:
+          type: string
+          description: Reference to the user who made the transaction
+        party:
+          type: string
+          description: The person or organization involved in the transaction'
+        category:
+          type: string
+          description: Category of the transaction
+          default: Others
+        type:
+          type: string
+          enum: [income, expenditure]
+          description: Type of transaction
+        currency:
+          type: string
+          description: Currency of the transaction
+        amount:
+          type: number
+          format: float
+          minimum: 0
+          description: Amount involved in the transaction
+        description:
+          type: string
+          description: Optional description or notes
+        paymentMethod:
+          type: string
+          description: Method of payment used
+          enum: [cash, card, bank_transfer, upi, other]
+          default: cash
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+      example:
+        id: 64f2c3bdefac134a30e8b920
+        userId: 5ebac534954b54139806c112
+        party: Amazon
+        category: Shopping
+        type: expenditure
+        currency: INR
+        amount: 1999.99
+        paymentMethod: card
+        description: Purchase of electronics
+        createdAt: 2025-08-01T09:00:00.000Z
+        updatedAt: 2025-08-01T09:00:00.000Z
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+
+  responses:
+    DuplicateEmail:
+      description: Email already taken
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Email already taken
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 401
+            message: Please authenticate
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 403
+            message: Forbidden
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
